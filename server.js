@@ -10,14 +10,14 @@ require("dotenv").config();
 const app = express();
 
 // 🔥 CONFIGURATION DU NOUVEAU DOMAINE
-const MAIN_DOMAIN = "https://www.omar-gaye-portfolio.shop";
+const MAIN_DOMAIN = "https://www.solutionconfidence.com";
 
 // 🔥 MIDDLEWARES ESSENTIELS
 // 🔥 REMPLACEZ TOUTE LA CONFIGURATION CORS PAR CE CODE :
 app.use(cors({
   origin: [
-    "https://www.omar-gaye-portfolio.shop",    // Nouveau domaine
-    "https://omar-gaye-portfolio.shop",        // Sans www
+    "https://www.solutionconfidence.com",    // Nouveau domaine
+    "https://solutionconfidence.com",        // Sans www
     "https://deploiement-solution-frontend.vercel.app", // ANCIEN DOMAINE VERCEL (important !)
     "http://localhost:3000",                   // Dev local
     "http://localhost:3001"                    // Dev local
