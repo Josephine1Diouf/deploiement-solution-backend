@@ -279,7 +279,7 @@ app.post("/api/paiement3", async (req, res) => {
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
       success_url: `${MAIN_DOMAIN}/success.html`,
       cancel_url: `${MAIN_DOMAIN}/cancel.html`,
-      ipn_url: "https://solution-backend-2.onrender.com/api/ipn",
+      ipn_url: "https://solution-backend-mlk5.onrender.com/api/ipn",
       
       customer_email: email,
       customer_message: message.substring(0, 255),
