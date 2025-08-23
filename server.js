@@ -18,7 +18,7 @@ app.use(cors({
   origin: [
     "https://www.omar-gaye-portfolio.shop",    // Nouveau domaine
     "https://omar-gaye-portfolio.shop",        // Sans www
-    "https://solution-frontend-fq8e.vercel.app", // ANCIEN DOMAINE VERCEL (important !)
+    "https://deploiement-solution-frontend.vercel.app", // ANCIEN DOMAINE VERCEL (important !)
     "http://localhost:3000",                   // Dev local
     "http://localhost:3001"                    // Dev local
   ],
