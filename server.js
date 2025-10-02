@@ -19,6 +19,7 @@ app.use(
     origin: [
       "https://www.solutionconfidence.com", // Nouveau domaine
       "https://solutionconfidence.com", //  DOMAINE VERCEL
+      "https://paytech1.vercel.app", // Frontend Vercel
       "http://localhost:3000", // Dev local
       "http://localhost:3001", // Dev local
     ],
@@ -44,6 +45,7 @@ app.get("/", (req, res) => {
 // 🔥 ROUTE PAIEMENT 1 - 1000 FCFA
 app.post("/api/paiement1", async (req, res) => {
   console.log("📥 Requête reçue sur /api/paiement1");
+  console.log("📋 Données reçues:", req.body);
 
   const { genre, email, message, date_inscription } = req.body;
 
@@ -54,8 +56,32 @@ app.post("/api/paiement1", async (req, res) => {
     });
   }
 
+  // Vérification des variables d'environnement
+  const requiredEnvVars = [
+    "GMAIL_USER",
+    "GMAIL_APP_PASSWORD",
+    "ADMIN_EMAIL",
+    "PAYTECH_API_KEY",
+    "PAYTECH_API_SECRET",
+  ];
+  const missingEnvVars = requiredEnvVars.filter(
+    (envVar) => !process.env[envVar]
+  );
+
+  if (missingEnvVars.length > 0) {
+    console.error("❌ Variables d'environnement manquantes:", missingEnvVars);
+    return res.status(500).json({
+      success: false,
+      error:
+        "Configuration serveur incomplète. Variables d'environnement manquantes.",
+      details:
+        process.env.NODE_ENV === "development" ? missingEnvVars : undefined,
+    });
+  }
+
   try {
     // Envoi mail admin
+    console.log("📧 Configuration de l'envoi d'email...");
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -64,6 +90,7 @@ app.post("/api/paiement1", async (req, res) => {
       },
     });
 
+    console.log("📧 Envoi de l'email de notification...");
     await transporter.sendMail({
       from: `"Solution Confidence" <${process.env.GMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL,
@@ -83,6 +110,7 @@ app.post("/api/paiement1", async (req, res) => {
     });
 
     // Configuration PayTech
+    console.log("💳 Configuration PayTech...");
     const paytechData = {
       item_name: "Formule 1 - Lettre réponse personnalisée",
       item_price: 1000,
@@ -106,6 +134,7 @@ app.post("/api/paiement1", async (req, res) => {
       API_SECRET: process.env.PAYTECH_API_SECRET,
     };
 
+    console.log("💳 Envoi de la requête PayTech...");
     const response = await axios.post(
       "https://paytech.sn/api/payment/request-payment",
       paytechData,
