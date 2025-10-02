@@ -86,7 +86,7 @@ app.post("/api/paiement1", async (req, res) => {
       currency: "XOF",
       ref_command: "CMD1_" + Date.now(),
       command_name: "Solution Confidence - Formule 1",
-      env: "test",
+      env: "prod",
 
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
       success_url: `${MAIN_DOMAIN}/success.html`,
@@ -184,7 +184,7 @@ app.post("/api/paiement2", async (req, res) => {
       currency: "XOF",
       ref_command: "CMD2_" + Date.now(),
       command_name: "Solution Confidence - Formule 2",
-      env: "test",
+      env: "prod",
       
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
       success_url: `${MAIN_DOMAIN}/success.html`,
@@ -274,7 +274,7 @@ app.post("/api/paiement3", async (req, res) => {
       currency: "XOF",
       ref_command: "CMD3_" + Date.now(),
       command_name: "Solution Confidence - Formule 3",
-      env: "test",
+      env: "prod",
       
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
       success_url: `${MAIN_DOMAIN}/success.html`,
