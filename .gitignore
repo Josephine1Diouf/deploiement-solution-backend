@@ -1,4 +1,5 @@
 # Fichiers sensibles
+.env
 
 # Dépendances
 node_modules/

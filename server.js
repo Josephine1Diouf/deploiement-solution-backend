@@ -18,8 +18,7 @@ app.use(
   cors({
     origin: [
       "https://www.solutionconfidence.com", // Nouveau domaine
-      "https://solutionconfidence.com", // Sans www
-      "https://deploiement-solution-frontend.vercel.app", // ANCIEN DOMAINE VERCEL (important !)
+      "https://solutionconfidence.com", //  DOMAINE VERCEL
       "http://localhost:3000", // Dev local
       "http://localhost:3001", // Dev local
     ],
@@ -66,7 +65,7 @@ app.post("/api/paiement1", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: "Solution Confidence" <${process.env.GMAIL_USER}>,
+      from: `"Solution Confidence" <${process.env.GMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL,
       subject: "Formule 1 - Lettre de réponse personnalisée - 1000 FCFA",
       html: `
@@ -93,9 +92,9 @@ app.post("/api/paiement1", async (req, res) => {
       env: "prod",
 
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
-      success_url: ${MAIN_DOMAIN}/success.html,
-      cancel_url: ${MAIN_DOMAIN}/cancel.html,
-      ipn_url: "https://www.solutionconfidence.com/api/ipn",
+      success_url: `${MAIN_DOMAIN}/success.html`,
+      cancel_url: `${MAIN_DOMAIN}/cancel.html`,
+      ipn_url: "https://solution-backend-mlk5.onrender.com/api/ipn",
 
       customer_email: email,
       customer_message: message.substring(0, 255),
@@ -168,7 +167,7 @@ app.post("/api/paiement2", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: "Solution Confidence" <${process.env.GMAIL_USER}>,
+      from: `"Solution Confidence" <${process.env.GMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL,
       subject: "Formule 2 - Suivi fraternel - 1500 FCFA",
       html: `
@@ -194,9 +193,9 @@ app.post("/api/paiement2", async (req, res) => {
       env: "prod",
 
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
-      success_url: ${MAIN_DOMAIN}/success.html,
-      cancel_url: ${MAIN_DOMAIN}/cancel.html,
-      ipn_url: "https://www.solutionconfidence.com/api/ipn",
+      success_url: `${MAIN_DOMAIN}/success.html`,
+      cancel_url: `${MAIN_DOMAIN}/cancel.html`,
+      ipn_url: "https://solution-backend-mlk5.onrender.com/api/ipn",
 
       customer_email: email,
       customer_message: message.substring(0, 255),
@@ -260,7 +259,7 @@ app.post("/api/paiement3", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: "Solution Confidence" <${process.env.GMAIL_USER}>,
+      from: `"Solution Confidence" <${process.env.GMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL,
       subject: "Formule 3 - Réponse prioritaire - 2000 FCFA",
       html: `
@@ -286,9 +285,9 @@ app.post("/api/paiement3", async (req, res) => {
       env: "prod",
 
       // 🔥 URLs DE REDIRECTION AVEC NOUVEAU DOMAINE
-      success_url: ${MAIN_DOMAIN}/success.html,
-      cancel_url: ${MAIN_DOMAIN}/cancel.html,
-      ipn_url: "https://www.solutionconfidence.com/api/ipn",
+      success_url: `${MAIN_DOMAIN}/success.html`,
+      cancel_url: `${MAIN_DOMAIN}/cancel.html`,
+      ipn_url: "https://solution-backend-mlk5.onrender.com/api/ipn",
 
       customer_email: email,
       customer_message: message.substring(0, 255),
@@ -355,10 +354,10 @@ app.use((error, req, res, next) => {
 // 🚀 DÉMARRAGE DU SERVEUR
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(✅ Serveur démarré sur le port ${PORT});
-  console.log(📍 URL: http://localhost:${PORT});
-  console.log(🌐 Domaine frontend: ${MAIN_DOMAIN});
-  console.log(⚙ Environnement: ${process.env.NODE_ENV || "development"});
+  console.log(`✅ Serveur démarré sur le port ${PORT}`);
+  console.log(`📍 URL: http://localhost:${PORT}`);
+  console.log(`🌐 Domaine frontend: ${MAIN_DOMAIN}`);
+  console.log(`⚙️ Environnement: ${process.env.NODE_ENV || "development"}`);
 });
 
-module.exports = app;
+module.exports = app;
