@@ -19,8 +19,7 @@ app.use(
     origin: [
       "https://www.solutionconfidence.com", // Nouveau domaine
       "https://solutionconfidence.com", //  DOMAINE VERCEL
-      "https://deploiement-solution-frontend.vercel.app", // Frontend Vercel
-      "https://paytech1.vercel.app", // Autre frontend Vercel
+      "https://paytech1.vercel.app", // Frontend Vercel
       "http://localhost:3000", // Dev local
       "http://localhost:3001", // Dev local
     ],
